@@ -44,7 +44,6 @@ class EnvCliffPyglet(EnvCliffEmpty):
         def on_key_press(keycode, modifiers):
             if keycode == key.SPACE:
                 self.has_exit = True
-                self.win.close()
     
 
     def render(self):

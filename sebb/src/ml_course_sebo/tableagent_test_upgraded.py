@@ -6,26 +6,25 @@ from agent_table import QLearningAgent
 environment = EnvCliffPyglet()
 environment.print_info()
 agent = QLearningAgent(environment)
-TRAINING_ITERATIONS = 10000
-TRAINING_RENDERING_ENABLED = True
 
 def train():
     print("TRAINING THE AGENT...")
     environment.reset_score()
     environment.label.text = "Training agent ..."
     agent.run_best_enabled = False # switch to training
-    for i in range(0, TRAINING_ITERATIONS):
+    while True:
         agent.main()
         
-        if TRAINING_RENDERING_ENABLED:
-            if environment.render():
-                break
+        if environment.render():
+            break
 
 def test():
-    print("TESTING...")
+    print("TESTING TRAINED AGENT...")
     testing_active = True
 
     environment.reset_score()
+    environment.has_exit = False
+    environment.print_info()
     agent.run_best_enabled = True # switch to testing
 
     i = 0
@@ -39,7 +38,8 @@ def test():
         
         if (i%10) == 0:
             score = environment.get_score()
-            environment.label.text = "[SPACE TO EXIT] i = {}, score = {}".format(i, score)
+            environment.label.text = "TRAINED [SPACE TO EXIT] i = {}, score = {}".format(i, score)
 
 
 train()
+test()
