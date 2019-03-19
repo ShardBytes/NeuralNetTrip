@@ -33,7 +33,7 @@ class QLearningAgent(agent.Agent):
 
         #init probabilities of choosing random action
         #different for training and testing
-        self.epsilon_training   = 0.1
+        self.epsilon_training   = 0.3
         self.epsilon_testing    = 0.01
 
         #init state

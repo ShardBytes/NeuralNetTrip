@@ -37,7 +37,7 @@ class EnvCliffPyglet(EnvCliffEmpty):
             qy = self.height - int(y*1.0/self.size) - 1
 
             # add reward to environment
-            self.rewards[qy][qx] = -1.0
+            self.rewards[qy][qx] = -1.0 + abs(self.rewards[qy][qx])
             self.reset_score()
 
         @self.win.event
