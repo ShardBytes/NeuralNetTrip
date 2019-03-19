@@ -1,17 +1,24 @@
-from libs.libs_env.env_cliff import EnvCliff
+from mylibs.env_cliff_empty import EnvCliffEmpty
 from random import random
 
 import pyglet
 from pyglet.gl import *
 from pyglet.window import key
 
-class EnvCliffPyglet(EnvCliff):
+class EnvCliffPyglet(EnvCliffEmpty):
     
     def __init__(self):
         super().__init__()
         self.win = pyglet.window.Window(resizable=True)
-        self.keys = pyglet.window.key.KeyStateHandler()
         self.has_exit = False
+
+        # setup maximal dimension
+        dim_max = self.win.width
+        if self.win.height < dim_max:
+            dim_max = self.win.height
+
+        # calculate pixel size of one square
+        self.size = dim_max/self.width
 
         self.label = pyglet.text.Label('',
                             font_name='Times New Roman',
@@ -21,6 +28,23 @@ class EnvCliffPyglet(EnvCliff):
 
         self.win.clear()
 
+        # setup events using decorators of window
+
+        @self.win.event
+        def on_mouse_press(x, y, button, modifiers):
+            # get x,y in q matrix
+            qx = int(x*1.0/self.size)
+            qy = self.height - int(y*1.0/self.size) - 1
+
+            # add reward to environment
+            self.rewards[qy][qx] = -1.0
+            self.reset_score()
+
+        @self.win.event
+        def on_key_press(keycode, modifiers):
+            if keycode == key.SPACE:
+                self.has_exit = True
+                self.win.close()
     
 
     def render(self):
@@ -39,15 +63,9 @@ class EnvCliffPyglet(EnvCliff):
             for x in range(0, self.width):
                 glPushMatrix()
 
-                # setup maximal dimension
-                dim_max = w
-                if h < dim_max:
-                    dim_max = h
-
                 # calculate xy on screen
-                size = dim_max/self.width
-                x_ = x*size
-                y_ = (self.height - y)*size
+                x_ = x*self.size
+                y_ = (self.height - y)*self.size
 
                 # determine color
                 if (y == self.agent_y) and (x == self.agent_x):
@@ -59,7 +77,7 @@ class EnvCliffPyglet(EnvCliff):
                 else:
                     glColor3f(0.5, 0.5, 0.5)
                 # draw the rectangle
-                self.draw_square(x_, y_, size)
+                self.draw_square(x_, y_, self.size)
 
                 glPopMatrix()
 
@@ -69,12 +87,7 @@ class EnvCliffPyglet(EnvCliff):
 
         self.win.flip()
         self.win.dispatch_events()
-        self.win.push_handlers(self.keys)
 
-        if self.keys[key.SPACE]:
-            self.has_exit = True
-            self.win.close()
-        
         return self.has_exit
 
     def draw_square(self, x, y, size):
