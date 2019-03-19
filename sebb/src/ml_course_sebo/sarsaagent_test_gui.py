@@ -1,9 +1,9 @@
 import sys
 sys.path.append("..")
-import libs.libs_env.env_cliff_gui
+from mylibs.env_cliff_pyglet import EnvCliffPyglet
 import sarsa_agent
 
-environment = libs.libs_env.env_cliff_gui.EnvCliffGui()
+environment = EnvCliffPyglet()
 environment.print_info()
 
 agent = sarsa_agent.SarsaAgent(environment)
@@ -19,9 +19,13 @@ agent.run_best_enabled = True
 testing_iterations = 10000
 for i in range(0, testing_iterations):
     agent.main()
-    environment.render()
 
+    if environment.render():
+        break
+    
+    print("i = {}, score = {}".format(i, environment.get_score()))
 
-    if (i%1000) == 0:
+    
+    if (i%10) == 0:
         score = environment.get_score()
-        print("i = {}, score = {}".format(i, score))
+        environment.label.text = "[SPACE TO EXIT] i = {}, score = {}".format(i, score)

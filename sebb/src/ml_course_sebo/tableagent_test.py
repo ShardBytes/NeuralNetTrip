@@ -1,12 +1,12 @@
 import sys
 sys.path.append("..")
-import libs.libs_env.env_cliff_gui
-import tableagent
+from mylibs.env_cliff_pyglet import EnvCliffPyglet
+from agent_table import QLearningAgent
 
-environment = libs.libs_env.env_cliff_gui.EnvCliffGui()
+environment = EnvCliffPyglet()
 environment.print_info()
 
-agent = tableagent.QLearningAgentTable(environment)
+agent = QLearningAgent(environment)
 
 training_iterations = 100000
 
@@ -19,9 +19,10 @@ agent.run_best_enabled = True
 testing_iterations = 100000
 for i in range(0, testing_iterations):
     agent.main()
-    environment.render()
+    
+    if environment.render():
+        break
 
-
-    if (i%1000) == 0:
+    if (i%10) == 0:
         score = environment.get_score()
-        print("i = {}, score = {}".format(i, score))
+        environment.label.text = "i = {}, score = {}".format(i, score)

@@ -31,7 +31,7 @@ class EnvCliff(libs_env.Env):
         for i in range(1, self.width-1):
             self.rewards[0][i] = -1.0
 
-        if True:
+        if False:
             self.rewards[1][2] = -1.0
             self.rewards[2][2] = -1.0
             #self.rewards[2][5] = -1.0
