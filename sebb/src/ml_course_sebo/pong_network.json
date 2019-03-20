@@ -33,6 +33,14 @@
             },
 
             {
+                "type"      : "fc",
+                "geometry"  : [1, 1, 20]
+            },
+            {
+                "type"      : "relu"
+            },
+
+            {
                 "type"      : "output"
             }
 

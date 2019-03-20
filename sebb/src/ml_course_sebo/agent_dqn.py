@@ -31,7 +31,7 @@ class DQNAgent(Agent):
             epsilon = self.epsilon_testing
         else:
             epsilon = self.epsilon_training
-            self.epsilon *= self.epsilon_decay # decay epsilon
+            self.epsilon_training *= self.epsilon_decay # decay epsilon
 
         state = self.env.get_observation()
         state_vector = dqn.VectorFloat(self.env.get_size())
@@ -61,7 +61,7 @@ class DQNAgent(Agent):
 
     # citanie a ukladanie
     def save(self, file_name_prefix):
-        self.deep_q_network.save()
+        self.deep_q_network.save(file_name_prefix)
 
     def load(self, file_name):
         self.deep_q_network.load_weights(file_name)
