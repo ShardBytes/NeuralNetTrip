@@ -31,16 +31,18 @@ for iteration in range(0, training_iterations):
     if iteration%100 == 0:
         print("Progress = ", iteration*100.0/training_iterations, "%  ", "score = ", env.get_score())
 
-print("testing score = ", env.get_score())
+print("DONE LEARNING")
 
 #reset score
 env.reset_score()
-
-#choose only the best action
 agent.run_best_enable()
 
+print("TESTING ...")
 
-#process testing iterations or infinite loop
+for iteration in range(0, 10000):
+    agent.main()
+
+print("testing score = ", env.get_score())
 
 #for iteration in range(0, 2000):
 while True:
