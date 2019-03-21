@@ -22,17 +22,34 @@
 
         "layers"         :
         [
-
             {
                 "type"      : "fc",
+                "geometry"  : [1, 1, 16]
+            },
+            {
+                "type"      : "relu"
+            },
+
+            {
+                "type"      : "dropout"
+            },
+
+            {
+                "type"      : "convolution",
                 "geometry"  : [1, 1, 32]
             },
             {
                 "type"      : "relu"
             },
+
             {
-                "type"      : "dropout"
+                "type"      : "fc",
+                "geometry"  : [1, 1, 8]
             },
+            {
+                "type"      : "relu"
+            },
+
 
             {
                 "type"      : "output"
