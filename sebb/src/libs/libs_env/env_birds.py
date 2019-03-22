@@ -78,22 +78,26 @@ class EnvBirds(libs_env.Env):
     def new_hole(self):
         self.hole_x = 1.0
         self.hole_y = random.random()*0.5 + 0.25
+        self.hole_width = 0.25
 
     def render_hole(self):
-        y_top = 1 - (self.hole_y + 0.125)/2.0
-        height_top = 1.0 - self.hole_y + 0.125
+        self.hole_y = 0.35
 
-        y_bottom = (self.hole_y - 0.125)/2.0
-        height_bottom = self.hole_y - 0.125
+        y_top = (1 - (self.hole_y + self.hole_width*0.5))/1.0
+        height_top = 2.0*(1.0 - self.hole_y - self.hole_width*0.5)
 
+        y_bottom = (self.hole_y - self.hole_width*0.5)/2.0
+        height_bottom = 2.0*(self.hole_y - self.hole_width*0.5)
+        
 
         g = self.gui
         g.push()
-        g.set_color(0.0, 0.8, 0.0)
 
+        g.set_color(0.0, 0.8, 0.0)
         g.translate(0.0, y_top, 0.0)
         g.paint_rectangle(0.1, height_top)
 
+        g.set_color(0.8, 0.0, 0.0)
         g.translate(0.0, y_bottom, 0.0)
         g.paint_rectangle(0.1, height_bottom)
 
