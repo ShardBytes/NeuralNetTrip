@@ -1,0 +1,194 @@
+Score: AVG STD MAX MIN
+----------------------
+
+fc 3 3 9
+relu
+dropout
+fc 1 1 16
+relu
+output
+SCORE: -146 942 1748 -2236
+--------------------------
+
+fc 8 8 2
+relu
+fc 4 4 1
+relu
+output
+SCORE: -162 610 1248 -1469
+-------
+
+dense fc 8 8 2
+relu
+fc 1 1 4
+relu
+output
+SCORE: -90 629 1210 -1265
+-------
+
+fc 8 8 2
+relu
+fc 4 1 1
+relu
+output
+SCORE: -378 997 1791 -2422
+-------
+
+fc 8 8 2
+relu
+fc 4 4 1
+relu
+output
+SCORE: -285 790 1817 -1498
+-------
+
+fc 1 1 4
+relu
+fc 1 1 4
+relu
+fc 1 1 4
+relu
+fc 1 1 4
+relu
+output
+SCORE: 52 992 1736 -1536
+-------
+
+fc 1 1 16
+relu
+fc 1 1 8
+relu
+fc 1 1 4
+relu
+output
+SCORE: 161 935 1729 -1716
+-------
+
+fc 1 1 32
+relu
+fc 1 1 16
+relu
+fc 1 1 8
+relu
+output
+SCORE: -102 753 1062 -1691
+-------
+
+LR: 0.005 (0.001)
+fc 1 1 16
+relu
+fc 1 1 8
+relu
+fc 1 1 4
+relu
+output
+SCORE: -131 674 1234 -1426
+-------
+
+LR: 0.01 (0.001)
+fc 1 1 16
+relu
+fc 1 1 8
+relu
+fc 1 1 4
+relu
+output
+SCORE: -159 550 1183 -1382
+-------
+
+fc 1 1 20
+relu
+dropout
+output
+SCORE: 330 624 1613 -909
+-------
+
+
+
+
+{
+  "experience_buffer_size"        : 512,
+  "gamma"               : 0.95,
+
+  "network_architecture":
+  {
+        "network_log_file_name" : "black_box_network.log",
+
+        "input_geometry"     : [8, 8, 2],
+        "output_geometry"    : [1, 1, 4],
+
+        "hyperparameters" :
+        {
+          "init_weight_range" : 0.0,
+          "learning_rate"     : 0.02,
+          "lambda1"           : 0.000001,
+          "lambda2"           : 0.000001,
+          "dropout"           : 0.02,
+
+          "minibatch_size"    : 64
+        },
+
+        "layers"         :
+        [
+
+            {
+                "type"      : "fc",
+                "geometry"  : [1, 1, 20]
+            },
+            {
+                "type"      : "relu"
+            },
+            {
+                "type"      : "dropout"
+            },
+            {
+                "type"      : "output"
+            }
+
+        ]
+  }
+}
+872 816 2669 -1788
+411 888 1877 -1934
+
+{
+  "experience_buffer_size"        : 512,
+  "gamma"               : 0.8,
+
+  "network_architecture":
+  {
+        "network_log_file_name" : "black_box_network.log",
+
+        "input_geometry"     : [8, 8, 2],
+        "output_geometry"    : [1, 1, 4],
+
+        "hyperparameters" :
+        {
+          "init_weight_range" : 0.0,
+          "learning_rate"     : 0.02,
+          "lambda1"           : 0.000001,
+          "lambda2"           : 0.000001,
+          "dropout"           : 0.02,
+
+          "minibatch_size"    : 64
+        },
+
+        "layers"         :
+        [
+
+            {
+                "type"      : "fc",
+                "geometry"  : [1, 1, 20]
+            },
+            {
+                "type"      : "relu"
+            },
+            {
+                "type"      : "output"
+            }
+
+        ]
+  }
+}
+1155 1300 3495 -2151
+849 981 2996 -863
