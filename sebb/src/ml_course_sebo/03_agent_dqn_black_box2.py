@@ -22,7 +22,7 @@ class BlackBoxTrial:
             self.env.print_info()
 
         #init DQN agent
-        self.agent = agent_dqn.DQNAgent(self.env, "black_box_network.json", 0.3, 0.05, 0.99999)
+        self.agent = agent_dqn.DQNAgent(self.env, "black_box_network2.json", 0.3, 0.05, 0.99999)
         #self.agent = agent.Agent(self.env)
 
         #iterations count
@@ -36,7 +36,6 @@ class BlackBoxTrial:
         #train bot
         for iteration in range(0, self.training_iterations):
             self.agent.main()
-            #self.env.render()
 
             #print debug info
             if self.verbose:
@@ -77,7 +76,7 @@ class BlackBoxTrial:
 
 def main():
 
-    print(open("black_box_network.json", "r").read())
+    print(open("black_box_network2.json", "r").read())
 
     trials_count = 4
     print("starting ", trials_count, " trials")
