@@ -8,18 +8,13 @@ lambda2 0.000001
 dropout 0.020000
 minibatch size 32
 
-                  FC  [    1     1     9] [    1     1    16] [    1     1    16] [       144         16][       320]
-                RELU  [    1     1    16] [    1     1     1] [    1     1    16] [         0          0][        32]
-             DROPOUT  [    1     1    16] [    1     1     1] [    1     1    16] [         0          0][        32]
-         CONVOLUTION  [    1     1    16] [    1     1    32] [    1     1    32] [       512         32][       544]
-                RELU  [    1     1    32] [    1     1     1] [    1     1    32] [         0          0][        64]
-                  FC  [    1     1    32] [    1     1     8] [    1     1     8] [       256          8][       528]
-                RELU  [    1     1     8] [    1     1     1] [    1     1     8] [         0          0][        16]
-                  FC  [    1     1     8] [    1     1     4] [    1     1     4] [        32          4][        72]
+                  FC  [    1     1    23] [    1     1   128] [    1     1   128] [      2944        128][      6144]
+                  FC  [    1     1   128] [    1     1     4] [    1     1     4] [       512          4][      1032]
 
-input_geometry  [1 1 9]
+input_geometry  [1 1 23]
 output_geometry [1 1 4]
-network flops operations 1608 FLOPS, 0.000002 GFLOPS
+network flops operations 7176 FLOPS, 0.000007 GFLOPS
 init DONE
 
+network destructor done
 network destructor done
