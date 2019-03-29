@@ -1,12 +1,12 @@
 {
-  "experience_buffer_size"        : 256,
+  "experience_buffer_size"        : 64,
   "gamma"               : 0.9,
 
   "network_architecture":
   {
         "network_log_file_name" : "black_box_network.log",
 
-        "input_geometry"     : [8, 8, 2],
+        "input_geometry"     : [8, 8, 1],
         "output_geometry"    : [1, 1, 4],
 
         "hyperparameters" :
@@ -24,33 +24,8 @@
         [
             {
                 "type"      : "fc",
-                "geometry"  : [1, 1, 16]
+                "geometry"  : [1, 1, 128]
             },
-            {
-                "type"      : "relu"
-            },
-
-            {
-                "type"      : "dropout"
-            },
-
-            {
-                "type"      : "convolution",
-                "geometry"  : [1, 1, 32]
-            },
-            {
-                "type"      : "relu"
-            },
-
-            {
-                "type"      : "fc",
-                "geometry"  : [1, 1, 8]
-            },
-            {
-                "type"      : "relu"
-            },
-
-
             {
                 "type"      : "output"
             }

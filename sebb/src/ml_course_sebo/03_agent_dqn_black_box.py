@@ -36,6 +36,7 @@ class BlackBoxTrial:
         #train bot
         for iteration in range(0, self.training_iterations):
             self.agent.main()
+            #self.env.render()
 
             #print debug info
             if self.verbose:
@@ -78,7 +79,7 @@ def main():
 
     print(open("black_box_network.json", "r").read())
 
-    trials_count = 32
+    trials_count = 4
     print("starting ", trials_count, " trials")
 
     trials_results = numpy.zeros(trials_count)

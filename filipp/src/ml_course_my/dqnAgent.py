@@ -29,7 +29,7 @@ class DQNAgent(agent.Agent):
 
         self.epsilon_training = epsilon_training
         self.epsilon_testing = epsilon_testing
-        self.epsilon_delay = epsilon_decay
+        self.epsilon_decay = epsilon_decay
 
     def main(self):
         if self.isBestRunEnabled():

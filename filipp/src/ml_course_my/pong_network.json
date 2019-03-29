@@ -1,13 +1,13 @@
 {
   "experience_buffer_size"        : 1024,
-  "gamma"               : 0.98,
+  "gamma"               : 0.99,
   "normalise"               : false,
 
   "network_architecture":
   {
         "network_log_file_name" : "pong_network.log",
 
-        "input_geometry"     : [32, 32, 1],
+        "input_geometry"     : [16, 20, 1],
         "output_geometry"    : [1, 1, 2],
 
         "hyperparameters" :
@@ -25,17 +25,25 @@
         [
 
             {
-                "type"      : "fc",
-                "geometry"  : [1, 1, 64]
+                "type"      : "dense fc",
+                "geometry"  : [16, 20, 1]
             },
             {
                 "type"      : "relu"
             },
-
+            {
+                "type"      : "fc",
+                "geometry"  : [1, 1, 8]
+            },
+            {
+                "type"      : "relu"
+            },
             {
                 "type"      : "output"
             }
 
         ]
+
   }
+
 }
