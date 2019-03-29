@@ -20,6 +20,10 @@ public class MainUI {
 	
 	private Environment environment;
 	
+	public static void main(String[] args){
+		new MainUI(new PongEnvironment());
+	}
+	
 	//Konštruktor pre UI and stuff
 	public MainUI(Environment newEnvironment) {
 		environment = newEnvironment;
@@ -36,7 +40,7 @@ public class MainUI {
 			System.exit(-1);
 			
 		}
-		startRender(60);
+		startRender(20);
 		
 	}
 	

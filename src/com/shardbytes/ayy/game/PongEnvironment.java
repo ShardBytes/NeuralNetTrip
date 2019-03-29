@@ -2,7 +2,6 @@ package com.shardbytes.ayy.game;
 
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
-import com.shardbytes.ayy.ai.TrainingData;
 
 import java.util.Random;
 
@@ -157,8 +156,6 @@ public class PongEnvironment extends Environment {
 			
 		}
 		positionToState();
-		
-		TrainingData
 		
 		nextMove();
 		
